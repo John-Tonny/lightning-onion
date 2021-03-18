@@ -7,8 +7,8 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/John-Tonny/vclsuite_vcld/btcec"
 	"github.com/aead/chacha20"
-	"github.com/btcsuite/btcd/btcec"
 )
 
 const (

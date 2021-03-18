@@ -8,9 +8,9 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/btcsuite/btcd/btcec"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcutil"
+	"github.com/John-Tonny/vclsuite_vcld/btcec"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 const (
@@ -486,7 +486,7 @@ type ProcessedPacket struct {
 // the onion encryption which the packet is wrapped with.
 type Router struct {
 	nodeID   [AddressSize]byte
-	nodeAddr *btcutil.AddressPubKeyHash
+	nodeAddr *vclutil.AddressPubKeyHash
 
 	onionKey SingleKeyECDH
 
@@ -497,10 +497,10 @@ type Router struct {
 // currently advertised onion private key, and the target Bitcoin network.
 func NewRouter(nodeKey SingleKeyECDH, net *chaincfg.Params, log ReplayLog) *Router {
 	var nodeID [AddressSize]byte
-	copy(nodeID[:], btcutil.Hash160(nodeKey.PubKey().SerializeCompressed()))
+	copy(nodeID[:], vclutil.Hash160(nodeKey.PubKey().SerializeCompressed()))
 
 	// Safe to ignore the error here, nodeID is 20 bytes.
-	nodeAddr, _ := btcutil.NewAddressPubKeyHash(nodeID[:], net)
+	nodeAddr, _ := vclutil.NewAddressPubKeyHash(nodeID[:], net)
 
 	return &Router{
 		nodeID:   nodeID,

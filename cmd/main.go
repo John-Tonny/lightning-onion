@@ -10,8 +10,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/btcsuite/btcd/btcec"
-	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/btcec"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
 	sphinx "github.com/lightningnetwork/lightning-onion"
 )
 
